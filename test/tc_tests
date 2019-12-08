@@ -1,0 +1,7 @@
+#! ruby
+
+require 'test/unit'
+require 'web_api'
+
+class Tests < Test::Unit::TestCase
+end
