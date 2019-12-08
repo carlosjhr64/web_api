@@ -4,4 +4,18 @@ require 'test/unit'
 require 'web_api'
 
 class Tests < Test::Unit::TestCase
+  def test_quick
+    webapi = nil
+    assert_nothing_raised do
+      webapi = WEB_API::WebApi.new "https://api.site.org/path-to-base/", header: {Authorization: "Bearer ABC123XYZ"}
+      webapi.add(:resource, type: :post)
+    end
+    if webapi
+      webapi.resource("a"=>1, "b"=>2) do |request|
+        assert_equal '/path-to-base/resource',  request.uri
+        assert_equal 'a=1&b=2', request.payload
+        break
+      end
+    end
+  end
 end
