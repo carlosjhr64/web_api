@@ -31,7 +31,7 @@ if OPTIONS.ap?
     class Open
       def ai(options = {})
         @h.ai(options)
-      end if defined? AwesomePrint
+      end
     end
   end
 end
@@ -49,8 +49,10 @@ end
 # As this key is always used, I set it at the root of the api.
 # Lastly, to trace each http request,
 # I pass a block to receive the http arguments which I then show.
-api = WEB_API::WebApi.new('https://api.todoist.com/rest/v1/',
-                 header: {Authorization: "Bearer #{ENV['TODOIST_TOKEN']}"}) do |request|
+api = WEB_API::WebApi.new(
+'https://api.todoist.com/rest/v1/',
+header: {Authorization: "Bearer #{ENV['TODOIST_TOKEN']}"}
+) do |request|
   show request if OPTIONS.trace?
 end
 
