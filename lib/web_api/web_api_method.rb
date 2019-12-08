@@ -38,7 +38,11 @@ module WEB_API
       payload = ''
       unless request.data.empty?
         if request.type == :post
-          payload = request.dumper.nil? ?  query_string(request.data) : request.dumper.call(request.data) 
+          if dumper=request.dumper and (dumper!=:none)
+            payload = dumper.call(request.data)
+          else
+            payload = query_string(request.data)
+          end
         else
           payload = query_string(request.data)
           request_uri += (uri.query ? '&' : '?') + payload
@@ -54,9 +58,9 @@ module WEB_API
       request.type   = type || @type
       request.data   = @data.merge(data)
       request.header = @header.merge(header)
-      request.dumper = (_  = dumper || @dumper) == :none ? nil : _
+      request.dumper = dumper || @dumper
 
-      parser = (_ = parser || @parser) == :none ? nil : _
+      parser = parser || @parser
       block  = block  || @block
 
       uri_parse(request)
@@ -64,8 +68,7 @@ module WEB_API
 
       body, content = http_response_body(request)
       parser = parser[content]  if parser.is_a? Hash
-      body   = parser.call body unless parser.nil?
-
+      body = parser.call body if parser and parser!=:none
       return body
     end
 

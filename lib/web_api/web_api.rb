@@ -1,8 +1,8 @@
 module WEB_API
   class WebApi
-    DUMPER = (defined? JSON)? JSON.method(:dump)  : nil
+    DUMPER = (defined? JSON)? JSON.method(:dump)  : :none
 
-    PARSER = {}
+    PARSER = Hash.new :none
     PARSER['application/json'] = JSON.method(:parse)           if defined? JSON
     PARSER['text/csv']         = CSV.method(:parse)            if defined? CSV
     PARSER['text/html']        = Nokogiri::HTML.method(:parse) if defined? Nokogiri
