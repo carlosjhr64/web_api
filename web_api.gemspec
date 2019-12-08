@@ -27,7 +27,7 @@ lib/web_api/web_api.rb
 lib/web_api/web_api_method.rb
   )
 
-  s.add_runtime_dependency 'crstruct', '~> 0.1', '>= 0.1.191207'
+  s.add_runtime_dependency 'crstruct', '~> 0.1.191207'
   s.requirements << 'ruby: ruby 2.6.5p114 (2019-10-01 revision 67812) [x86_64-linux]'
 
 end
