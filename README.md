@@ -34,7 +34,7 @@ The model is that at each step...
 3. call to a WebApi method
 
 ...one builds up the url, type, data, and header of the http request.
-The WebApi methods #new, #add, and #<method> all have the same argument signature:
+The WebApi methods `#new`, `#add`, and `#<method>` all have the same argument signature:
 
     extension String, type: Symbol, data: Hash, header: Hash, dumper: Proc, Parser: Proc|Hash(String, Proc)
 
@@ -45,10 +45,10 @@ The type, dumper, and parser can be changed at each step.
 One can read the code to check the minor nuances of each method's signature,
 such as default values.
 
-Note that #add will assume extension is the same as the name of the method if
+Note that `#add` will assume extension is the same as the name of the method if
 no extenstion is given.
 
-Note that #<method> will assume the user meant to pass data if it only gets a hash, but
+Note that `#<method>` will assume the user meant to pass data if it only gets a hash, but
 the hash must then not have any `Symbol` for its keys:
 
     #<method>({"a"=>"ABC","x"=>"XYZ"}) #=> #<method>('', data: {"a"=>"ABC","x"=>"XYZ"})
