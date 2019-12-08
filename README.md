@@ -7,24 +7,61 @@
 
 Ruby library for web api's.
 
-In Beta.  Testing not done.  Only GET and POST implemented.
-
 ## SYNOPSIS:
 
     require 'web_api'
-    webapi = WEB_API::WebApi.new
-    ###                **Name**           **Url**           **Type(get or post)**
-    webapi.add(:wutuwant, 'http://service.org/v1/wutuwant', :get)
+    webapi = WEB_API::WebApi.new "https://api.site.org/path-to-base/", header: {Authorization: "Bearer ABC123XYZ"}
+    # for a post to https://api.site.org/path-to-base/resource...
+    webapi.add(:resource, type: :post)
     # You can pass the post's (or query's) key value pairs in a hash.
-    response = webapi.wutuwant({'key'=>'value'   })
-
-## FEATURES/PROBLEMS:
-
-* Beta, still testing.
+    body = webapi.resource(data: {key: "value"})
 
 ## INSTALL:
 
-    $ sudo gem install web_api
+    $ gem install web_api
+
+## MORE:
+
+There's not that much code here...
+under 200 lines in `lib/**.rb` at the time of this writting.
+Take a look at the examples given at [github](https://www.github.com/carlosjhr64/web_api/examples)
+for use cases.
+
+The model is that at each step...
+
+1. instantiation of a WebApi object
+2. addition of a WebApi method
+3. call to a WebApi method
+
+...one builds up the url, type, data, and header of the http request.
+The WebApi methods #new, #add, and #<method> all have the same argument signature:
+
+    extension String, type: Symbol, data: Hash, header: Hash, dumper: Proc, Parser: Proc|Hash(String, Proc)
+
+The extension builds up the url by concatanation.
+The data and headers hashes are built up with merge.
+The type, dumper, and parser can be changed at each step.
+
+One can read the code to check the minor nuances of each method's signature,
+such as default values.
+
+Note that #add will assume extension is the same as the name of the method if
+no extenstion is given.
+
+Note that #<method> will assume the user meant to pass data if it only gets a hash, but
+the hash must then not have any `Symbol` for its keys:
+
+    #<method>({"a"=>"ABC","x"=>"XYZ"}) #=> #<method>('', data: {"a"=>"ABC","x"=>"XYZ"})
+
+The dumper to dump the data in a post request is JSON.dump by default if JSON is available.
+
+The parser to parse the body of an "application/json" type content is JSON.parse by default if available.
+You can read the code and inspect `WEB_API::WebApi::PARSER` to see the other parsers available by default.
+
+If one does not want to parse the reponse's body,
+one can set `parser: :none`. For example:
+
+    body = webapi.resourse(data: {key: "value"}, parser: :none)
 
 ## LICENSE:
 
