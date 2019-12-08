@@ -24,7 +24,7 @@ Ruby library for web api's.
 
 There's not that much code here...
 under 200 lines in `lib/**.rb` at the time of this writting.
-Take a look at the examples given at [github](https://www.github.com/carlosjhr64/web_api/examples)
+Take a look at the examples given at [github](https://github.com/carlosjhr64/web_api/tree/master/examples)
 for use cases.
 
 The model is that at each step...
