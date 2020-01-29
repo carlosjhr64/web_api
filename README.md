@@ -1,5 +1,6 @@
-# web_api
+# WebApi
 
+* [VERSION 0.3.191208](https://www.github.com/carlosjhr64/web_api)
 * [github](https://www.github.com/carlosjhr64/web_api)
 * [rubygems](https://rubygems.org/gems/web_api)
 
@@ -23,7 +24,7 @@ Ruby library for web api's.
 ## MORE:
 
 There's not that much code here...
-under 200 lines in `lib/**.rb` at the time of this writting.
+under 200 lines in `lib/**.rb` at the time of this writing.
 Take a look at the examples given at [github](https://github.com/carlosjhr64/web_api/tree/master/examples)
 for use cases.
 
@@ -38,7 +39,7 @@ The WebApi methods `#new`, `#add`, and `#<method>` all have the same argument si
 
     extension String, type: Symbol, data: Hash, header: Hash, dumper: Proc, Parser: Proc|Hash(String, Proc)
 
-The extension builds up the url by concatanation.
+The extension builds up the url by concatenation.
 The data and headers hashes are built up with merge.
 The type, dumper, and parser can be changed at each step.
 
@@ -46,7 +47,7 @@ One can read the code to check the minor nuances of each method's signature,
 such as default values.
 
 Note that `#add` will assume extension is the same as the name of the method if
-no extenstion is given.
+no extension is given.
 
 Note that `#<method>` will assume the user meant to pass data if it only gets a hash, but
 the hash must then not have any `Symbol` for its keys:
@@ -58,7 +59,7 @@ The dumper to dump the data in a post request is JSON.dump by default if JSON is
 The parser to parse the body of an "application/json" type content is JSON.parse by default if available.
 You can read the code and inspect `WEB_API::WebApi::PARSER` to see the other parsers available by default.
 
-If one does not want to parse the reponse's body,
+If one does not want to parse the response's body,
 one can set `parser: :none`. For example:
 
     body = webapi.resourse(data: {key: "value"}, parser: :none)
@@ -67,7 +68,7 @@ one can set `parser: :none`. For example:
 
 (The MIT License)
 
-Copyright (c) 2019 CarlosJHR64
+Copyright (c) 2020 CarlosJHR64
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
