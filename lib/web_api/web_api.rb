@@ -5,7 +5,7 @@ module WEB_API
     PARSER = Hash.new :none
     PARSER['application/json'] = JSON.method(:parse)           if defined? JSON
     PARSER['text/csv']         = CSV.method(:parse)            if defined? CSV
-    PARSER['text/html']        = Nokogiri::HTML.method(:parse) if defined? Nokogiri
+    PARSER['text/html']     = Nokogiri::HTML.method(:parse) if defined? Nokogiri
 
     def initialize(base =  '',
                    type:   :get,
@@ -51,8 +51,10 @@ module WEB_API
         super if @strict
         add symbol
       end
-      extension, data = '', extension unless extension.is_a? String # user passed data as first argument
-      @webmethods[symbol].run(extension, type, data, header, dumper, parser, &block)
+      # user passed data as first argument?
+      extension, data = '', extension unless extension.is_a? String
+      @webmethods[symbol].run(extension, type, data, header, dumper, parser,
+                              &block)
     end
   end
 end

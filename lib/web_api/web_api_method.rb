@@ -84,9 +84,11 @@ module WEB_API
       when :get, :delete, :head, :copy, :move, :options, :trace
         http.method(request.type).call request.uri, request.header
       when :post, :patch, :lock, :unlock, :mkcol, :propfind, :proppatch
-        http.method(request.type).call request.uri, request.payload, request.header
+        http.method(request.type)
+          .call request.uri, request.payload, request.header
       else
-        raise UnsupportedMethodError, "Method type #{type}(#{type.class}) not supported by WEB_API::WebApi."
+        raise UnsupportedMethodError,
+          "Method type #{type}(#{type.class}) not supported by WEB_API::WebApi."
       end
     end
 
