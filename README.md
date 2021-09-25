@@ -1,6 +1,6 @@
 # WebApi
 
-* [VERSION 0.3.191208](https://www.github.com/carlosjhr64/web_api)
+* [VERSION 1.0.210925](https://www.github.com/carlosjhr64/web_api)
 * [github](https://www.github.com/carlosjhr64/web_api)
 * [rubygems](https://rubygems.org/gems/web_api)
 
@@ -68,7 +68,7 @@ one can set `parser: :none`. For example:
 
 (The MIT License)
 
-Copyright (c) 2020 CarlosJHR64
+Copyright (c) 2021 CarlosJHR64
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

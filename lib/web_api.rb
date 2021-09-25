@@ -7,7 +7,7 @@ require 'crstruct'
 
 # This Gem
 module WEB_API
-  VERSION = '0.3.191208'
+  VERSION = '1.0.210925'
   require 'web_api/web_api_method.rb'
   require 'web_api/web_api.rb'
 end

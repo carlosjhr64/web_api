@@ -11,7 +11,7 @@ class Tests < Test::Unit::TestCase
       webapi.add(:resource, type: :post)
     end
     if webapi
-      webapi.resource("a"=>1, "b"=>2) do |request|
+      webapi.resource( {"a"=>1, "b"=>2} ) do |request|
         assert_equal '/path-to-base/resource',  request.uri
         assert_equal 'a=1&b=2', request.payload
         break
