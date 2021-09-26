@@ -1,14 +1,14 @@
 Gem::Specification.new do |s|
 
   s.name     = 'web_api'
-  s.version  = '1.0.210925'
+  s.version  = '1.0.210926'
 
   s.homepage = 'https://github.com/carlosjhr64/web_api'
 
-  s.author   = 'carlosjhr64'
+  s.author   = 'CarlosJHR64'
   s.email    = 'carlosjhr64@gmail.com'
 
-  s.date     = '2021-09-25'
+  s.date     = '2021-09-26'
   s.licenses = ['MIT']
 
   s.description = <<DESCRIPTION
@@ -27,7 +27,7 @@ lib/web_api/web_api.rb
 lib/web_api/web_api_method.rb
   )
 
-  s.add_runtime_dependency 'crstruct', '~> 0.1.191207'
-  s.requirements << 'ruby: ruby 2.6.5p114 (2019-10-01 revision 67812) [x86_64-linux]'
+  s.add_runtime_dependency 'crstruct', '~> 0.1.210920'
+  s.requirements << 'ruby: ruby 3.0.2p107 (2021-09-01 revision 0db68f0233) [x86_64-linux]'
 
 end

@@ -16,12 +16,9 @@ module WEB_API
     def query_string(ah)
       case ah
       when Array
-        ah.select{|h| !h.empty?}.map{|h| query_string(h)}.join('&')
+        ah.select{!_1.empty?}.map{query_string _1}.join('&')
       when Hash
-        ah.map do |k,v|
-          "#{k}=#{escape v}"
-        end
-        .join('&')
+        ah.map{"#{_1}=#{escape _2}"}.join('&')
       else
         ah.to_s
       end

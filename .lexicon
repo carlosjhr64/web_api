@@ -1,3 +1,5 @@
+_1
+_2
 add
 ah
 Array
@@ -22,7 +24,6 @@ escape
 extension
 get
 gsub
-h
 Hash
 has_key
 head
@@ -37,7 +38,6 @@ initialize
 is_a
 join
 JSON
-k
 lock
 map
 merge
@@ -94,7 +94,6 @@ URI
 uri_parse
 url
 use_ssl
-v
 value
 VERSION
 WebApi

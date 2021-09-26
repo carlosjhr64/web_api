@@ -3,9 +3,9 @@ module WEB_API
     DUMPER = (defined? JSON)? JSON.method(:dump)  : :none
 
     PARSER = Hash.new :none
-    PARSER['application/json'] = JSON.method(:parse)           if defined? JSON
-    PARSER['text/csv']         = CSV.method(:parse)            if defined? CSV
-    PARSER['text/html']     = Nokogiri::HTML.method(:parse) if defined? Nokogiri
+    PARSER['application/json'] = JSON.method(:parse)    if defined? JSON
+    PARSER['text/csv']  = CSV.method(:parse)            if defined? CSV
+    PARSER['text/html'] = Nokogiri::HTML.method(:parse) if defined? Nokogiri
 
     def initialize(base =  '',
                    type:   :get,
