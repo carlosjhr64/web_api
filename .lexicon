@@ -69,6 +69,7 @@ raise
 request
 request_uri
 require
+require_relative
 response
 ResponseError
 Ruby30
