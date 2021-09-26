@@ -84,7 +84,7 @@ class WebApiMethod
         .call request.uri, request.payload, request.header
     else
       raise UnsupportedMethodError,
-        "Method type #{type}(#{type.class}) not supported by WEB_API::WebApi."
+        "Method type #{type}(#{type.class}) not supported by WebApi."
     end
   end
 

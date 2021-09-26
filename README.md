@@ -11,7 +11,7 @@ Ruby library for web api's.
 ## SYNOPSIS:
 ```ruby
 require 'web_api'
-webapi = WEB_API::WebApi.new "https://api.site.org/path-to-base/",
+webapi = WebApi.new "https://api.site.org/path-to-base/",
                              header: {Authorization: "Bearer ABC123XYZ"}
 # for a post to https://api.site.org/path-to-base/resource...
 webapi.add(:resource, type: :post)
@@ -67,7 +67,7 @@ if JSON is available.
 
 The parser to parse the body of an "application/json" type content is
 JSON.parse by default if available.
-You can read the code and inspect `WEB_API::WebApi::PARSER`
+You can read the code and inspect `WebApi::PARSER`
 to see the other parsers available by default.
 
 If one does not want to parse the response's body,
