@@ -7,7 +7,7 @@ class Tests < Test::Unit::TestCase
   def test_quick
     webapi = nil
     assert_nothing_raised do
-      webapi = WEB_API::WebApi.new "https://api.site.org/path-to-base/", header: {Authorization: "Bearer ABC123XYZ"}
+      webapi = WebApi.new "https://api.site.org/path-to-base/", header: {Authorization: "Bearer ABC123XYZ"}
       webapi.add(:resource, type: :post)
     end
     if webapi

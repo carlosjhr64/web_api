@@ -6,11 +6,10 @@ require 'cgi'
 require 'crstruct'
 
 # This Gem
-module WEB_API
+class WebApi
   VERSION = '1.0.210926'
   require_relative 'web_api/web_api_method.rb'
   require_relative 'web_api/web_api.rb'
 end
-
 # Requires:
 #`ruby`

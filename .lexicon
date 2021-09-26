@@ -97,5 +97,4 @@ use_ssl
 value
 VERSION
 WebApi
-WEB_API
 WebApiMethod
