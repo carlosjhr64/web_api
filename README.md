@@ -57,7 +57,7 @@ Note that `#add` will assume extension is the same as the name of the method if
 no extension is given.
 
 Note that `#<method>` will assume the user meant to pass data if
-it only gets a hash, but the hash must then not have any `Symbol` for its keys:
+it only gets a hash:
 
     #<method>({"a"=>"ABC","x"=>"XYZ"})
     #=> #<method>('', data: {"a"=>"ABC","x"=>"XYZ"})
