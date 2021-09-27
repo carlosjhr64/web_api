@@ -29,7 +29,7 @@ DICT.add(:define, 'define.php')
 
 # I'll be getting the HTML DOC from Nokogiri.
 # I just want the first definition, if any.
-# Be warned that html scrapping breaks easily on site changes.
+# Be warned that HTML scrapping breaks easily on site changes.
 def define(term)
   doc = DICT.define( {term: term} ).css('div.meaning')
   # <div class="meaning">
