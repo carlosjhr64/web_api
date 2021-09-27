@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+require 'helpema'
+Helpema.requires'
+  ruby        ~>3.0
+  helpema     ~>3.2
+  help_parser ~>8.0'
+
+OPTIONS = HelpParser['',<<HELP]
+Usage:
+  urbandictionary <words=WORD>+
+Types:
+  WORD /^\\w+$/
+# Note:
+# If you get a "Found" message,
+# try either the Capitalized or lower case term.
+HELP
+
+# I'm HTML scrapping via Nokogiri.
+# Require "nokogiri" first so that WebApi knows it's available.
+require 'nokogiri'
+require 'web_api'
+
+# The leading '/' is needed.
+DICT = WebApi.new 'https://www.urbandictionary.com/'
+
+# This creates method :define on
+# https://www.urbandictionary.com/define.php'
+DICT.add(:define, 'define.php')
+
+# I'll be getting the HTML DOC from Nokogiri.
+# I just want the first definition, if any.
+# Be warned that html scrapping breaks easily on site changes.
+def define(term)
+  doc = DICT.define( {term: term} ).css('div.meaning')
+  # <div class="meaning">
+  if meaning = doc.css('div.meaning')&.first&.text
+    return meaning
+  end
+  'N/A'
+rescue
+  $!.message
+end
+
+puts define OPTIONS.words.join(' ')
