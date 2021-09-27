@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
 
   s.name     = 'web_api'
-  s.version  = '1.0.210926'
+  s.version  = '1.0.210927'
 
   s.homepage = 'https://github.com/carlosjhr64/web_api'
 

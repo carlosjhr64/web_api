@@ -1,17 +1,16 @@
-require 'web_api'
-include WEB_API
-
-# IRB Tools
+begin
+  require File.basename Dir.glob('lib/*.rb')[0]
+  klass   = `egrep '^((module)|(class)) \\w+' lib/*.rb | egrep -o '\\w+$'`.strip
+  version = eval "#{klass}::VERSION"
+  message = "### #{klass} #{version} ###"
+rescue Exception
+  message = $!.message
+end
 require 'irbtools/configure'
-_ = WEB_API::VERSION.split('.')[0..1].join('.')
-Irbtools.welcome_message = "### WEB_API(#{_}) ###"
-require 'irbtools'
-IRB.conf[:PROMPT][:WEB_API] = {
-  PROMPT_I:    '> ',
-  PROMPT_N:    '| ',
-  PROMPT_C:    '| ',
-  PROMPT_S:    '| ',
-  RETURN:      "=> %s \n",
-  AUTO_INDENT: true,
-}
-IRB.conf[:PROMPT_MODE] = :WEB_API
+Irbtools.welcome_message = message
+Irbtools.start
+### Note ###
+# If you get:
+#     irb: warn: can't alias ls from irb_ls.
+# edit irb/extend-command.rb's install_alias_method print statement to:
+#     print "irb: warn: can't alias #{to} from #{from}.\n" if $DEBUG
