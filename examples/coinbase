@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+require 'helpema'
+Helpema.requires'
+  ruby        ~>3.0
+  helpema     ~>3.2
+  help_parser ~>8.0'
+
+OPTIONS = HelpParser['',<<HELP]
+Usage:
+  coinbase [:options+] <crypto=SYMBOL>
+Options:
+  --priced=SYMBOL \t Defaults to USD
+Types:
+  SYMBOL /^[A-Z]+$/
+HELP
+
+# Coinbase's api is JSON based.
+# Require "json" first so that WebApi know's it's avaible.
+require 'json'
+require 'web_api'
+
+# The leading '/' is needed.
+COINBASE = WebApi.new 'https://api.coinbase.com/v2/'
+
+# This creates method :xrates on
+# https://api.coinbase/v2/exchange-rates
+COINBASE.add(:xrates, 'exchange-rates')
+
+# The only parameter for the above method is currency,
+# and it returns the rates for all currencies, so
+# I'll make a method to give me just what I want:
+def spot(crypto, priced)
+  COINBASE.xrates( {currency: 'BCH'} )['data']['rates'][priced]
+end
+
+PRICED = OPTIONS.priced || 'USD'
+CRYPTO = OPTIONS.crypto
+
+puts spot(CRYPTO, PRICED)
