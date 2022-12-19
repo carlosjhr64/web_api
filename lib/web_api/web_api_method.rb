@@ -70,7 +70,11 @@ class WebApiMethod
 
   def http_response_body(request)
     response = http_response(request)
-    raise ResponseError, response.message unless OK === response.code.to_i
+    unless OK === response.code.to_i
+      $stderr.puts response.code
+      $stderr.puts response.body
+      raise ResponseError, response.message
+    end
     return response.body, response['content-type'].sub(/;.*$/,'')
   end
 

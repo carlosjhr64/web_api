@@ -1,6 +1,6 @@
 # WebApi
 
-* [VERSION 1.0.210927](https://www.github.com/carlosjhr64/web_api)
+* [VERSION 1.0.221219](https://www.github.com/carlosjhr64/web_api)
 * [github](https://www.github.com/carlosjhr64/web_api)
 * [rubygems](https://rubygems.org/gems/web_api)
 
@@ -79,7 +79,7 @@ body = webapi.resourse(data: {key: "value"}, parser: :none)
 
 (The MIT License)
 
-Copyright (c) 2021 CarlosJHR64
+Copyright (c) 2022 CarlosJHR64
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
