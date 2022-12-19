@@ -1,10 +1,7 @@
 # Standard Libraries
 require 'net/http'
-require 'cgi'
-
 # External Gems
 require 'crstruct'
-
 # This Gem
 class WebApi
   VERSION = '1.0.221219'

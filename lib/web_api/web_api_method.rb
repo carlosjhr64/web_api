@@ -7,9 +7,9 @@ class WebApiMethod
   OK = 200..299
 
   # Escapes value's string representation for query string use.
-  def escape(value)
-    #http://rosettacode.org/wiki/URL_encoding#Ruby
-    CGI.escape(value.to_s).gsub("+", "%20")
+  def escape(s)
+    # Contraction of ERB#url_encode method
+    s.to_s.b.gsub(/[^\w\-.~]/n){sprintf("%%%02X",_1.unpack1("C"))}
   end
 
   def query_string(ah)
