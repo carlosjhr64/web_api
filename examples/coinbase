@@ -1,9 +1,8 @@
 #!/usr/bin/env ruby
-require 'helpema'
-Helpema.requires'
-  ruby        ~>3.0
-  helpema     ~>3.2
-  help_parser ~>8.0'
+require 'rafini/requires'
+Rafini.requires'
+  ruby        ~>3.1
+  help_parser ~>8.1'
 
 OPTIONS = HelpParser['',<<HELP]
 Usage:
