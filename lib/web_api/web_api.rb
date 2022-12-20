@@ -1,17 +1,22 @@
 class WebApi
-  DUMPER = (defined? JSON)? JSON.method(:dump) : :none
+  def WebApi.get_dumper
+    (defined? JSON)? JSON.method(:dump) : :none
+  end
 
-  PARSER = Hash.new :none
-  PARSER['application/json'] = JSON.method(:parse)    if defined? JSON
-  PARSER['text/csv']  = CSV.method(:parse)            if defined? CSV
-  PARSER['text/html'] = Nokogiri::HTML.method(:parse) if defined? Nokogiri
+  def WebApi.get_parsers
+    parsers = Hash.new :none
+    parsers['application/json'] = JSON.method(:parse)    if defined? JSON
+    parsers['text/csv']  = CSV.method(:parse)            if defined? CSV
+    parsers['text/html'] = Nokogiri::HTML.method(:parse) if defined? Nokogiri
+    return parsers
+  end
 
   def initialize(base =  '',
                  type:   :get,
                  data:   {},
                  header: {},
-                 dumper: DUMPER,
-                 parser: PARSER,
+                 dumper: WebApi.get_dumper,
+                 parser: WebApi.get_parsers,
                  &block)
     @base, @type, @data, @header, @dumper, @parser, @block =
      base,  type,  data,  header,  dumper,  parser,  block
