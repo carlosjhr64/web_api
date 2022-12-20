@@ -28,6 +28,9 @@ class WebApiMethod
      target,  type,  data,  header,  dumper,  parser,  block
   end
 
+  # uri_parse(request: CRStruct) -> N/A
+  # Expects request to have url, data, type, and dumper.
+  # Sets the request's scheme, host, port, uri, and payload
   def uri_parse(request)
     uri = URI.parse(request.url)
     request_uri = uri.request_uri
@@ -56,15 +59,15 @@ class WebApiMethod
     request.header = @header.merge(header)
     request.dumper = dumper || @dumper
 
-    parser = parser || @parser
-    block  = block  || @block
+    parser ||= @parser
+    block  ||= @block
 
     uri_parse(request)
     block.call(request) if block
 
     body, content = http_response_body(request)
-    parser = parser[content]  if parser.is_a? Hash
-    body = parser.call body if parser and parser!=:none
+    parser = parser[content]   if parser.is_a? Hash
+    body   = parser.call(body) if parser and parser!=:none
     return body
   end
 

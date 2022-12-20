@@ -1,6 +1,6 @@
 # WebApi
 
-* [VERSION 1.0.221219](https://www.github.com/carlosjhr64/web_api)
+* [VERSION 1.0.221220](https://www.github.com/carlosjhr64/web_api)
 * [github](https://www.github.com/carlosjhr64/web_api)
 * [rubygems](https://rubygems.org/gems/web_api)
 

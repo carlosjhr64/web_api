@@ -1,14 +1,14 @@
 Gem::Specification.new do |s|
 
   s.name     = 'web_api'
-  s.version  = '1.0.221219'
+  s.version  = '1.0.221220'
 
   s.homepage = 'https://github.com/carlosjhr64/web_api'
 
   s.author   = 'CarlosJHR64'
   s.email    = 'carlosjhr64@gmail.com'
 
-  s.date     = '2022-12-19'
+  s.date     = '2022-12-20'
   s.licenses = ['MIT']
 
   s.description = <<DESCRIPTION
