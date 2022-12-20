@@ -12,11 +12,11 @@ Gem::Specification.new do |s|
   s.licenses = ['MIT']
 
   s.description = <<DESCRIPTION
-Ruby library for web api's.
+Ruby library for web API's.
 DESCRIPTION
 
   s.summary = <<SUMMARY
-Ruby library for web api's.
+Ruby library for web API's.
 SUMMARY
 
   s.require_paths = ['lib']
