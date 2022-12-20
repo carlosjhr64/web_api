@@ -15,7 +15,6 @@ Types:
 HELP
 
 # I'm HTML scrapping via Nokogiri.
-# Require "nokogiri" first so that WebApi knows it's available.
 require 'nokogiri'
 require 'web_api'
 

@@ -6,7 +6,7 @@
 
 ## DESCRIPTION:
 
-Ruby library for web api's.
+Ruby library for web API's.
 
 ## SYNOPSIS:
 ```ruby
@@ -25,18 +25,18 @@ $ gem install web_api
 ## MORE:
 
 There's not that much code here...
-under 200 lines in `lib/**.rb` at the time of this writing.
+Under 200 lines in `lib/**.rb` at the time of this writing.
 Take a look at the examples given at [github](https://github.com/carlosjhr64/web_api/tree/master/examples)
 for use cases.
 
 The model is that at each step...
 
-1. instantiation of a WebApi object
-2. addition of a WebApi method
-3. call to a WebApi method
+1. instantiation of a `WebApi` object
+2. addition of a `WebApi` method
+3. call to a `WebApi` method
 
-...one builds up the url, type, data, and header of the http request.
-The WebApi methods `#new`, `#add`, and `#<method>`
+...one builds up the URL, type, data, and header of the HTTP request.
+The `WebApi` methods `#new`, `#add`, and `#<method>`
 all have the same argument signature:
 
     extension String,
@@ -62,13 +62,11 @@ it only gets a hash:
     #<method>({"a"=>"ABC","x"=>"XYZ"})
     #=> #<method>('', data: {"a"=>"ABC","x"=>"XYZ"})
 
-The dumper to dump the data in a post request is JSON.dump by default
-if JSON is available.
+The dumper to dump the data in a post request is `JSON.dump` by default
+if `JSON` is available.
 
-The parser to parse the body of an "application/json" type content is
-JSON.parse by default if available.
-You can read the code and inspect `WebApi::PARSER`
-to see the other parsers available by default.
+The parser to parse the body of an `application/json` type content is
+`JSON.parse` by default if available.
 
 If one does not want to parse the response's body,
 one can set `parser: :none`. For example:

@@ -14,7 +14,6 @@ Types:
 HELP
 
 # Coinbase's api is JSON based.
-# Require "json" first so that WebApi knows it's available.
 require 'json'
 require 'web_api'
 
